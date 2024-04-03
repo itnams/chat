@@ -28,7 +28,7 @@
                         </div>
                         <div class="form-group my-2">
                             <label for="confirm-pasword">Confirm Pasword</label>
-                            <input type="confirm-pasword" class="form-control" id="confirm-pasword" placeholder="Confirm Pasword" formControlName="confirmPasword"  [class.is-invalid]="rfRegister.controls['confirmPasword'].errors && (rfRegister.controls['confirmPasword'].dirty || rfRegister.controls['confirmPasword'].touched)">
+                            <input type="password" class="form-control" id="confirm-pasword" placeholder="Confirm Pasword" formControlName="confirmPasword"  [class.is-invalid]="rfRegister.controls['confirmPasword'].errors && (rfRegister.controls['confirmPasword'].dirty || rfRegister.controls['confirmPasword'].touched)">
                             <div class="invalid-feedback" *ngIf="rfRegister.controls['confirmPasword'].errors && (rfRegister.controls['confirmPasword'].dirty || rfRegister.controls['confirmPasword'].touched)">
                                 <span>Confirm Pasword is required</span>
                             </div>

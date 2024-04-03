@@ -20,6 +20,7 @@ export class RegisterComponent {
   constructor(private firebaseService: FirebaseService){}
   onSubmit(){
     const user: User = {
+      id: this.generateRandomBase64UrlString(),
       username: this.rfRegister.value.username ?? '',
       fullName: this.rfRegister.value.fullName ?? '',
       password: this.rfRegister.value.password ?? '',
@@ -29,5 +30,13 @@ export class RegisterComponent {
     } else {
       alert("Please check password and confirm password")
     }
+  }
+  generateRandomBase64UrlString(): string {
+    const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
+    let randomString = '';
+    for (let i = 0; i < 64; i++) {
+      randomString += charset.charAt(Math.floor(Math.random() * charset.length));
+    }
+    return btoa(randomString).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
   }
 }
