@@ -20,7 +20,7 @@ export class RegisterComponent {
   constructor(private firebaseService: FirebaseService){}
   onSubmit(){
     const user: User = {
-      id: this.generateRandomBase64UrlString(),
+      uidd: this.generateRandomBase64UrlString(),
       username: this.rfRegister.value.username ?? '',
       fullName: this.rfRegister.value.fullName ?? '',
       password: this.rfRegister.value.password ?? '',
