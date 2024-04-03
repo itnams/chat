@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Login</div>
+                <div class="card-body">
+                    <form  (ngSubmit)="onSubmit()" [formGroup]="rfLogin">
+                        <div class="form-group my-2">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="username" [class.is-invalid]="rfLogin.controls['username'].errors && (rfLogin.controls['username'].dirty || rfLogin.controls['username'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfLogin.controls['username'].errors && (rfLogin.controls['username'].dirty || rfLogin.controls['username'].touched)">
+                                <span>Username is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"  [class.is-invalid]="rfLogin.controls['password'].errors && (rfLogin.controls['password'].dirty || rfLogin.controls['password'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfLogin.controls['password'].errors && (rfLogin.controls['password'].dirty || rfLogin.controls['password'].touched)">
+                                <span>Password is required</span>
+                            </div>
+                        </div>
+                        <div class="d-flex py-2 justify-content-between">
+                            <button type="submit" class="btn btn-primary">Login</button>
+                            <a class="my-auto" [routerLink]="['/register']" >Register</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

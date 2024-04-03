@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card">
+                <div class="card-header">Register</div>
+                <div class="card-body">
+                    <form  (ngSubmit)="onSubmit()" [formGroup]="rfRegister">
+                        <div class="form-group my-2">
+                            <label for="username">Username</label>
+                            <input type="text" class="form-control" id="username" placeholder="Enter username" formControlName="username" [class.is-invalid]="rfRegister.controls['username'].errors && (rfRegister.controls['username'].dirty || rfRegister.controls['username'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfRegister.controls['username'].errors && (rfRegister.controls['username'].dirty || rfRegister.controls['username'].touched)">
+                                <span>Username is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="fullName">Full Name</label>
+                            <input type="text" class="form-control" id="fullName" placeholder="Enter Full Name" formControlName="fullName" [class.is-invalid]="rfRegister.controls['fullName'].errors && (rfRegister.controls['fullName'].dirty || rfRegister.controls['fullName'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfRegister.controls['fullName'].errors && (rfRegister.controls['fullName'].dirty || rfRegister.controls['fullName'].touched)">
+                                <span>Full Name is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"  [class.is-invalid]="rfRegister.controls['password'].errors && (rfRegister.controls['password'].dirty || rfRegister.controls['password'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfRegister.controls['password'].errors && (rfRegister.controls['password'].dirty || rfRegister.controls['password'].touched)">
+                                <span>Password is required</span>
+                            </div>
+                        </div>
+                        <div class="form-group my-2">
+                            <label for="confirm-pasword">Confirm Pasword</label>
+                            <input type="confirm-pasword" class="form-control" id="confirm-pasword" placeholder="Confirm Pasword" formControlName="confirmPasword"  [class.is-invalid]="rfRegister.controls['confirmPasword'].errors && (rfRegister.controls['confirmPasword'].dirty || rfRegister.controls['confirmPasword'].touched)">
+                            <div class="invalid-feedback" *ngIf="rfRegister.controls['confirmPasword'].errors && (rfRegister.controls['confirmPasword'].dirty || rfRegister.controls['confirmPasword'].touched)">
+                                <span>Confirm Pasword is required</span>
+                            </div>
+                        </div>
+                        <div class="d-flex py-2 justify-content-between">
+                            <button [disabled]="rfRegister.invalid" type="submit" class="btn btn-primary">Register</button>
+                            <a class="my-auto" [routerLink]="['/login']" >Login</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
