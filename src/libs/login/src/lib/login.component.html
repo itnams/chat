@@ -20,7 +20,7 @@
                             </div>
                         </div>
                         <div class="d-flex py-2 justify-content-between">
-                            <button type="submit" class="btn btn-primary">Login</button>
+                            <button [disabled]="rfLogin.invalid" type="submit" class="btn btn-primary">Login</button>
                             <a class="my-auto" [routerLink]="['/register']" >Register</a>
                         </div>
                     </form>

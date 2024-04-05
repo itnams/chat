@@ -1,0 +1,42 @@
+.message-body {
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  padding: 15px;
+  margin: 10px 0;
+  position: relative;
+
+  &.outgoing {
+    background-color: #e8f1ff;
+    float: right;
+    clear: both;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      right: -10px;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent #e8f1ff transparent transparent;
+    }
+  }
+
+  &.incoming {
+    float: left;
+    clear: both;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 5px;
+      left: -10px;
+      border-style: solid;
+      border-width: 0 10px 10px 0;
+      border-color: transparent #f7f7f7 transparent transparent;
+    }
+  }
+  .message-time {
+    font-size: 12px;
+    color: #999;
+  }
+}

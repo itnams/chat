@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@chat/home": ["src/libs/home/src/index.ts"],
       "@chat/login": ["src/libs/login/src/index.ts"],
       "@chat/register": ["src/libs/register/src/index.ts"],
       "@chat/share": ["src/libs/share/src/index.ts"]

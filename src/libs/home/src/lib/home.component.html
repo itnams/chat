@@ -1,0 +1,47 @@
+<div class="container-fluid h-100">
+    <div class="row h-100">
+        <div class="col-md-3 border-right p-0">
+            <div class="list-group">
+                <a class="list-group-item list-group-item-action"
+                    *ngFor="let chat of listChat$ | async, let index = index;" (click)="selectChat(index)"
+                    [ngClass]="{active: index == (chatIndex$ | async)}">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/35" class="rounded-circle me-2" alt="Avatar">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-0">{{chat.fullNamePartner}}</h6>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-9 p-0">
+            <div class="d-flex flex-column h-100">
+                <div class="chat-header border-bottom p-3">
+                    <div class="d-flex align-items-center">
+                        <img src="https://via.placeholder.com/35" class="rounded-circle me-2" alt="Avatar">
+                        <div class="flex-grow-1">
+                            <h6 class="mb-0">{{getFullNamePartner()}}</h6>
+                        </div>
+                    </div>
+                </div>
+                <div id="scroll-area" class="chat-body flex-grow-1 overflow-auto p-3" style="height: 85vh;" #scrollArea>
+                    <div class="message-left mb-3" *ngFor="let messages of getMessages()">
+                        <div class="message-bubble message-body"
+                            [ngClass]="{outgoing: messages.sender == (username$ | async), incoming:messages.sender != (username$ | async)}">
+                            {{messages.body}}
+                            <p class="message-time">{{getTime(messages) | timeAgo }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="chat-footer border-top p-3">
+                    <form (ngSubmit)="sendMessages()" [formGroup]="rfMessages">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="Enter" formControlName="body">
+                            <button [disabled]="rfMessages.invalid" type="submit" class="btn btn-primary">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
