@@ -23,20 +23,6 @@ export class FirebaseService {
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
     }
-    getListUser(resp: (user: User[]) => void) {
-        const db = getDatabase();
-        const starCountRef = ref(db, 'users/');
-        onValue(starCountRef, (snapshot) => {
-            const data: User[] = Object.keys(snapshot.val()).map((key) => {
-                return {
-                    fullName: snapshot.val()[key].fullName,
-                    password: snapshot.val()[key].password,
-                    username: snapshot.val()[key].username,
-                };
-            });
-            resp(data)
-        });
-    }
     register(user: User) {
         const db = getDatabase();
         const dbRef = ref(getDatabase());
@@ -88,6 +74,22 @@ export class FirebaseService {
             console.error(error);
         });
     }
+    
+    getListUser(resp: (user: User[]) => void) {
+        const db = getDatabase();
+        const starCountRef = ref(db, 'users/');
+        onValue(starCountRef, (snapshot) => {
+            const data: User[] = Object.keys(snapshot.val()).map((key) => {
+                return {
+                    fullName: snapshot.val()[key].fullName,
+                    password: snapshot.val()[key].password,
+                    username: snapshot.val()[key].username,
+                };
+            });
+            resp(data)
+        });
+    }
+ 
     generateRandomBase64UrlString(): string {
         const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_';
         let randomString = '';

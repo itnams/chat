@@ -1,24 +1,50 @@
 <div class="container-fluid h-100">
+    <a class="m-2" (click)="logOut()">Log Out</a>
     <div class="row h-100">
-        <div class="col-md-3 border-right p-0">
-            <div class="list-group">
-                <a class="list-group-item list-group-item-action"
-                    *ngFor="let chat of listChat$ | async, let index = index;" (click)="selectChat(index)"
+        <div class="col-md-3 border-right p-0 position-relative">
+            <input type="text" class="form-control" placeholder="Search" [formControl]="searchControl">
+            <div class="list-group mt-2">
+                <a class="list-group-item list-group-item-action overflow-auto "
+                    *ngFor="let chat of filterListChat$ | async, let index = index;" (click)="selectChat(index)"
                     [ngClass]="{active: index == (chatIndex$ | async)}">
                     <div class="d-flex align-items-center">
-                        <img src="https://via.placeholder.com/35" class="rounded-circle me-2" alt="Avatar">
+                        <span class="avatar text-bg-primary me-2">{{chat.fullNamePartner?.charAt(0)}}</span>
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{chat.fullNamePartner}}</h6>
                         </div>
                     </div>
                 </a>
             </div>
+            <div id="user-modal" class="position-absolute z-3 bg-modal custom-modal overflow-auto" *ngIf="isModalVisible">
+                <input type="text" class="form-control" placeholder="Search" [formControl]="searchUser">
+                <div class="list-group mt-2 ">
+                    <a class="list-group-item list-group-item-action"
+                        *ngFor="let user of filterListuser$ | async, let index = index;">
+                        <div class="d-flex align-items-center">
+                            <span class="avatar text-bg-primary me-2">{{user.fullName?.charAt(0)}}</span>
+                            <div class="flex-grow-1">
+                                <h6 class="mb-0">{{user.fullName}}</h6>
+                                <button type="button" class="btn btn-secondar btn-circle" (click)="sayHi(user)" style="margin-left: 8vw">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-send-fill" viewBox="0 0 16 16">
+                                        <path d="M15.964.686a.5.5 0 0 0-.65-.65L.767 5.855H.766l-.452.18a.5.5 0 0 0-.082.887l.41.26.001.002 4.995 3.178 3.178 4.995.002.002.26.41a.5.5 0 0 0 .886-.083zm-1.833 1.89L6.637 10.07l-.215-.338a.5.5 0 0 0-.154-.154l-.338-.215 7.494-7.494 1.178-.471z"/>
+                                      </svg>
+                                </button>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            <button id="add-chat" type="button" class="btn btn-primary btn-circle position-absolute z-3" style="margin-top: 640px;margin-left: 330px;" (click)="toggleModal()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus" viewBox="0 0 16 16">
+                    <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4"/>
+                  </svg>
+            </button>
         </div>
         <div class="col-md-9 p-0">
             <div class="d-flex flex-column h-100">
                 <div class="chat-header border-bottom p-3">
                     <div class="d-flex align-items-center">
-                        <img src="https://via.placeholder.com/35" class="rounded-circle me-2" alt="Avatar">
+                        <span class="avatar text-bg-primary me-2">{{getFullNamePartner()?.charAt(0)}}</span>
                         <div class="flex-grow-1">
                             <h6 class="mb-0">{{getFullNamePartner()}}</h6>
                         </div>
