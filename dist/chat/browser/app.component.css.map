@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.scss"],
+  "sourcesContent": ["body {\r\n    min-height: 100vh;\r\n    display: flex;\r\n    flex-direction: column;\r\n  }\r\n  \r\n  .footer {\r\n    flex: 1 0 auto;\r\n    margin-top: auto;\r\n  }"],
+  "mappings": ";AAAA;AACI,cAAA;AACA,WAAA;AACA,kBAAA;;AAGF,CAAA;AACE,QAAA,EAAA,EAAA;AACA,cAAA;;",
+  "names": []
+}
