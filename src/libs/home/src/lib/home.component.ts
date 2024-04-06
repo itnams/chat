@@ -81,6 +81,9 @@ export class HomeComponent implements OnInit {
     const chatIndex = this.chatIndex$.value
     return this.listChat$.value[chatIndex]?.fullNamePartner ?? ''
   }
+  getCharFirst(name: string): string {
+    return name.charAt(0) ?? ''
+  }
   getMessages() {
     const chatIndex = this.chatIndex$.value
     console.log(this.listChat$.value[chatIndex]?.messages)
